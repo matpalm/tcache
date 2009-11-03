@@ -1,0 +1,3 @@
+memcache wrappeding disk cache for twitter api calls
+
+extracting commong code used by statuslurp, tcache and twitter_follow_recommendations
