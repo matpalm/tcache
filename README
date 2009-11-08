@@ -1,10 +1,14 @@
 cache for twitter api calls with memcache wrapping disk cache wrapping curl calls
 
-memcache isn't mandatory but does speed things up that little bit extra; uses the Ruby-MemCache gem
+handles the twitter rate limiting by blocking when required
 
 if you have a twitter whitelisted account 
 bash> export UID_PWD=your_twitter_uid:your_twitter_password
-or else suffer the 150/hr api call limit 
+
+if you don't have one go here http://apiwiki.twitter.com/Rate-limiting
+and get one or else suffer the 150/hr api call limit 
+
+memcache isn't mandatory but does speed things up that little bit extra; uses the Ruby-MemCache gem
 
 irb> require 'tcache'
 irb> cache = TCache.new
