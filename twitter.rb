@@ -1,5 +1,5 @@
-require 'curl'
-require 'rate_limiter'
+require File.dirname(__FILE__)+'/curl'
+require File.dirname(__FILE__)+'/rate_limiter'
 
 class Twitter
 

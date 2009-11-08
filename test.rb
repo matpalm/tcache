@@ -1,4 +1,4 @@
-require 'tcache.rb'
+require File.dirname(__FILE__)+'/tcache.rb'
 
 me = 26970530
 tc = TCache.new :use_memcache => true, :disk_cache_dir => 'cache'

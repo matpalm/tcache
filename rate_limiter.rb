@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'json'
 require 'date'
-require 'curl'
+require File.dirname(__FILE__)+'/curl'
 
 class RateLimiter
 

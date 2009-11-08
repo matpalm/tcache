@@ -1,10 +1,10 @@
-require 'mem_cache'
-require 'disk_cache'
-require 'twitter'
+require File.dirname(__FILE__)+'/mem_cache'
+require File.dirname(__FILE__)+'/disk_cache'
+require File.dirname(__FILE__)+'/twitter'
 
-require 'user_info'
-require 'friends'
-require 'followers'
+require File.dirname(__FILE__)+'/user_info'
+require File.dirname(__FILE__)+'/friends'
+require File.dirname(__FILE__)+'/followers'
 
 class TCache
 
