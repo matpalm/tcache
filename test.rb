@@ -1,7 +1,7 @@
 require 'tcache.rb'
 
 me = 26970530
-tc = TCache.new
+tc = TCache.new :use_memcache => true, :disk_cache_dir => 'cache'
 puts (tc.user_info_for me).inspect
 puts (tc.name_for me).inspect
 puts (tc.screen_name_for me).inspect

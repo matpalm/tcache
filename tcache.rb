@@ -8,9 +8,13 @@ require 'followers'
 
 class TCache
 
-	def initialize	
-		@cache = MemCacheW.new(DiskCache.new(Twitter.new, 'cache'))
-#		@cache = DiskCache.new(Twitter.new)
+	def initialize params
+		disk_cache_dir = params[:disk_cache_dir] || 'cache'
+		@cache = DiskCache.new(Twitter.new, disk_cache_dir)
+
+		use_memcache = params[:use_memcache]
+		use_memcache = true if use_memcache.nil?
+		@cache = MemCacheW.new(@cache) if use_memcache
 	end
 
 	def user_info_for id
