@@ -11,7 +11,7 @@ and get one or else suffer the 150/hr api call limit
 memcache isn't mandatory but does speed things up that little bit extra; uses the Ruby-MemCache gem
 
 irb> require 'tcache'
-irb> cache = TCache.new
+irb> cache = TCache.new, :use_memcache => false, :disk_cache_dir => '/bigdisk/twitter_cache'
 irb> cache.user_info_for 26970530
 {"name"=>"mat kelcey", "profile_sidebar_border_color"=>"BDDCAD", "profile_sidebar_fill_color"=>"DDFFCC", "profile_background_tile"=>false, "location"=>"melbourne", "created_at"=>"Fri Mar 27 08:09:18 +0000 2009", "profile_image_url"=>"http://a3.twimg.com/profile_images/111681437/n650991500_422744_3329_normal.jpg", "profile_link_color"=>"0084B4", "favourites_count"=>1, "url"=>"http://matpalm.com", "utc_offset"=>36000, "id"=>26970530, "profile_text_color"=>"333333", "protected"=>false, "followers_count"=>55, "time_zone"=>"Melbourne", "verified"=>false, "profile_background_color"=>"ffffff", "notifications"=>false, "geo_enabled"=>false, "description"=>"", "profile_background_image_url"=>"http://a1.twimg.com/profile_background_images/6838930/backdrop.jpg", "friends_count"=>70, "status"=>{"created_at"=>"Sat Nov 07 04:26:02 +0000 2009", "favorited"=>false, "truncated"=>false, "text"=>"an interesting article on big data \"The pathologies of big data\" http://bit.ly/12I2u6", "id"=>5498865182, "in_reply_to_user_id"=>nil, "in_reply_to_screen_name"=>nil, "source"=>"web", "in_reply_to_status_id"=>nil}, "statuses_count"=>277, "screen_name"=>"mat_kelcey", "following"=>false}
 
