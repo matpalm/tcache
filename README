@@ -1,3 +1,30 @@
-memcache wrappeding disk cache for twitter api calls
+cache for twitter api calls with memcache wrapping disk cache wrapping curl calls
 
-extracting commong code used by statuslurp, tcache and twitter_follow_recommendations
+memcache isn't mandatory but does speed things up that little bit extra; uses the Ruby-MemCache gem
+
+if you have a twitter whitelisted account 
+bash> export UID_PWD=your_twitter_uid:your_twitter_password
+or else suffer the 150/hr api call limit 
+
+irb> require 'tcache'
+irb> cache = TCache.new
+irb> cache.user_info_for 26970530
+{"name"=>"mat kelcey", "profile_sidebar_border_color"=>"BDDCAD", "profile_sidebar_fill_color"=>"DDFFCC", "profile_background_tile"=>false, "location"=>"melbourne", "created_at"=>"Fri Mar 27 08:09:18 +0000 2009", "profile_image_url"=>"http://a3.twimg.com/profile_images/111681437/n650991500_422744_3329_normal.jpg", "profile_link_color"=>"0084B4", "favourites_count"=>1, "url"=>"http://matpalm.com", "utc_offset"=>36000, "id"=>26970530, "profile_text_color"=>"333333", "protected"=>false, "followers_count"=>55, "time_zone"=>"Melbourne", "verified"=>false, "profile_background_color"=>"ffffff", "notifications"=>false, "geo_enabled"=>false, "description"=>"", "profile_background_image_url"=>"http://a1.twimg.com/profile_background_images/6838930/backdrop.jpg", "friends_count"=>70, "status"=>{"created_at"=>"Sat Nov 07 04:26:02 +0000 2009", "favorited"=>false, "truncated"=>false, "text"=>"an interesting article on big data \"The pathologies of big data\" http://bit.ly/12I2u6", "id"=>5498865182, "in_reply_to_user_id"=>nil, "in_reply_to_screen_name"=>nil, "source"=>"web", "in_reply_to_status_id"=>nil}, "statuses_count"=>277, "screen_name"=>"mat_kelcey", "following"=>false}
+
+irb> cache.name_for 26970530
+"mat kelcey"
+
+irb> cache.screen_name_for 26970530
+"mat_kelcey"
+
+irb> cache.num_friends_of 26970530
+70
+
+irb> cache.num_followers_of 26970530
+
+55
+irb> cache.friends_of 26970530
+[18318677, 66780587, 6253282, 14053240, 53109465, 3452911, 19045596, 85450354, 10198372, 14059639, 14509478, 1498181, 1554031, 18246193, 14344469, 765548, 18805477, 14358390, 7805542, 14346186, 33632713, 57919572, 16061930, 73495355, 15166546, 27181748, 13886402, 6972722, 18367054, 7542902, 28835645, 58802477, 17853549, 16134540, 19041500, 16621333, 15736597, 15260300, 36636132, 4322401, 54780669, 53382919, 25246808, 9084632, 12686382, 39185317, 25285429, 14813320, 28310606, 31727532, 33838201, 13377222, 18093032, 19634001, 26991817, 15131502, 17701072, 19644523, 17726463, 24284989, 3116191, 7030512, 22992877, 7464942, 18889369, 6166562, 7815932, 14838149, 22601314, 17062314]
+
+irb> cache.followers_of 26970530
+[18318677, 66780587, 6253282, 14053240, 53109465, 3452911, 19045596, 85450354, 10198372, 14059639, 14509478, 1498181, 1554031, 18246193, 14344469, 765548, 18805477, 14358390, 7805542, 14346186, 33632713, 57919572, 16061930, 73495355, 15166546, 27181748, 13886402, 6972722, 18367054, 7542902, 28835645, 58802477, 17853549, 16134540, 19041500, 16621333, 15736597, 15260300, 36636132, 4322401, 54780669, 53382919, 25246808, 9084632, 12686382, 39185317, 25285429, 14813320, 28310606, 31727532, 33838201, 13377222, 18093032, 19634001, 26991817, 15131502, 17701072, 19644523, 17726463, 24284989, 3116191, 7030512, 22992877, 7464942, 18889369, 6166562, 7815932, 14838149, 22601314, 17062314]
